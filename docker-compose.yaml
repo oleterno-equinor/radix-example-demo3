@@ -1,0 +1,24 @@
+version: "3.5"
+
+networks:
+  radix-example-demo3:
+    name: radix-example-demo3
+
+services:
+  frontend:
+    image: node:16-alpine
+    working_dir: /my-app
+    command: [ "sh", "-c", "npm install --prefer-offline --no-audit && npm start" ]
+    container_name: radix-example-demo3-frontend
+    environment:
+      - npm_config_proxy=http://www-proxy.statoil.no:80
+      - REACT_APP_SECRET=supersecret
+      - REACT_APP_VARIABLE=1
+    networks:
+      - radix-example-demo3
+    ports:
+      - "8000:3000"
+    volumes:
+      - type: bind
+        source: ./my-app
+        target: /my-app

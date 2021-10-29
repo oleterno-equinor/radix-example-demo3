@@ -1,0 +1,31 @@
+apiVersion: radix.equinor.com/v1
+kind: RadixApplication
+metadata:
+  name: ole-markus-react-example-env
+spec:
+  environments:
+    - name: dev
+      build:
+        from: master
+    - name: qa
+      build:
+        from: release
+    - name: prod
+  components:
+    - name: simple-react
+      src: ./my-app
+      environmentConfig:
+        - environment: dev
+          REACT_APP_VARIABLE: 1
+        - environment: qa
+          REACT_APP_VARIABLE: 2
+        - environment: prod
+          REACT_APP_VARIABLE: 3
+      ports:
+        - name: http
+          port: 3000
+      publicPort: http
+
+  dnsAppAlias:
+    environment: prod
+    component: simple-react
