@@ -28,6 +28,8 @@ spec:
         - name: http
           port: 3000
       publicPort: http
+      secrets:
+        - REACT_APP_SECRET
 
   dnsAppAlias:
     environment: prod
