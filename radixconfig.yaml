@@ -13,18 +13,23 @@ spec:
     - name: prod
   components:
     - name: simple-react
-      src: ./my-app
+      src: .
       environmentConfig:
         - environment: dev
-          REACT_APP_VARIABLE: 1
+          variables:
+            REACT_APP_VARIABLE: 1
         - environment: qa
-          REACT_APP_VARIABLE: 2
+          variables:
+            REACT_APP_VARIABLE: 2
         - environment: prod
-          REACT_APP_VARIABLE: 3
+          variables:
+            REACT_APP_VARIABLE: 3
       ports:
         - name: http
           port: 3000
       publicPort: http
+      secrets:
+        - REACT_APP_SECRET
 
   dnsAppAlias:
     environment: prod
