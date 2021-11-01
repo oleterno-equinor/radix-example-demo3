@@ -1,1 +1,2 @@
-Hi!
+## Radix demo 3
+This is an example of a Radix app with multiple environments. The environments are defined in `radixconfig.yaml`. The `dev` and `qa` environments are configured to build from the branches `master` and `release` respectively. The `prod` environment is not mapped to any branch, so deploying to this environment is done in the Radix Web Console with the `promote` pipeline. Read more about Radix environments [here](https://radix.equinor.com/references/reference-radix-config/#environments). 
